@@ -7,7 +7,9 @@ node {
 
 	stage 'reading directory'
 	def files = findFiles(glob: 'project1/*.jmx')
+
 	for(i in files){
-		echo "File: ${i}"
+		stage "Running Task: ${i}"
+		sh "jmeter -n -t ${i} -l test.jtl"
 	}
 }
