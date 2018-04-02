@@ -1,0 +1,4 @@
+node {
+	stage 'Running JMeter Test'
+	sh 'jmeter -n -t blah.jmx'
+}
