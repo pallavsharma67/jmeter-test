@@ -6,7 +6,7 @@ node {
 	sh "ls"
 
 	stage 'Select Project DIR'
-	def currentDirFiles = findFiles(glob: "**/")
+	def currentDirFiles = findFiles()
 	String dirList = "--select--"
 	for(i in currentDirFiles){
 		echo "${i}"
