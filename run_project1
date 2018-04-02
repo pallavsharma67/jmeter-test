@@ -1,5 +1,18 @@
 node {
-	stage 'starting'
-	def project_folder = input message: 'User input required', ok: 'Release!',parameters: [choice(name: 'RELEASE_SCOPE', choices: 'patch\nminor\nmajor', description: 'What is the release scope?')]
+	stage 'Getting git repo'
+	def workspace = pwd()
+	git branch:'master', credentialsId: '1', url: 'https://github.com/pallavsharma67/jmeter-test'
+	echo "Current Directory : ${workspace}"
+	sh "ls"
+
+	stage 'Select Project DIR'
+	def currentDirFiles = findFiles(glob: "${workspace}")
+	String dirList = "--select--"
+	for(i in currentDirFiles){
+		if(i.isDirectory()){
+			dirList += "/${i}"
+		}
+	}
+	def project_folder = input message: 'Select Project', ok: 'Select',parameters: [choice(name: 'PROJECT_FOLDER', choices: dirList, description: 'What is the release scope?')]
 	echo "${project_folder}"
 }
