@@ -1,18 +1,4 @@
 node {
 	input 'Are you sure?'
-	/*
-	stage 'Getting git repo'
-	def workspace = pwd()
-	git branch:'master', credentialsId: '1', url: 'https://github.com/pallavsharma67/jmeter-test'
-	echo "Current Directory : ${workspace}"
-	sh "ls"
-
-	stage 'reading directory'
-	def project_folder = 'project1'
-	def files = findFiles(glob: "${project_folder}/*.jmx")
-
-	for(i in files){
-		stage "Running Task: ${i}"
-		sh "jmeter -n -t ${i} -l test.jtl"
-	}*/
+	
 }
