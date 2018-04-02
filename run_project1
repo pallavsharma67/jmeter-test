@@ -8,6 +8,6 @@ node {
 	stage 'reading directory'
 	def files = findFiles(glob: 'project1/*.jmx')
 	for(i in files){
-		echo i
+		echo "File: ${i}"
 	}
 }
