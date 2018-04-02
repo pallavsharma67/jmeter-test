@@ -1,4 +1,4 @@
 node {
+	stage 'starting'
 	input 'Are you sure?'
-	
 }
