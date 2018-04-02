@@ -1,4 +1,4 @@
 node {
 	stage 'Running JMeter Test'
-	sh 'jmeter -n -t blah.jmx'
+	sh 'jmeter -n -t **/blah.jmx -Jusers=20 -l test.jtl'
 }
