@@ -26,7 +26,7 @@ node {
 
 		for(i in files){
 			stage "Running Task: ${i}"
-			sh "jmeter -n -t ${i} -l test.jtl"
+			sh "jmeter -n -t \"${i}\" -l test.jtl"
 		}
 	}else{
 		echo "Nothing selected"
