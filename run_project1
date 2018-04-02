@@ -10,10 +10,11 @@ node {
 	String dirList = "--select--"
 	for(i in currentDirFiles){
 		echo "${i}"
-		dirList += "\${i}"
+		dirList += "\\${i}"
 	}
 	echo dirList
 	def project_folder = input message: 'Select Project', ok: 'Select',parameters: [choice(name: 'PROJECT_FOLDER', choices: dirList, description: 'What is the project to run?')]
+	project_folder = project_folder.trim()
 	echo "${project_folder}"
 
 	if("${project_folder}" != "--select--"){
