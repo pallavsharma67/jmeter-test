@@ -1,5 +1,5 @@
 node {
 	stage 'starting'
-	def project_folder = input message: 'Select a folder to run', submitter: 'F1,F2'
+	def project_folder = input message: 'User input required', ok: 'Release!',parameters: [choice(name: 'RELEASE_SCOPE', choices: description: 'What is the release scope?')]
 	echo "${project_folder}"
 }
