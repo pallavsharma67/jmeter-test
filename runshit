@@ -1,6 +1,7 @@
 node {
 	stage 'Running JMeter Test'
 	def workspace = pwd()
+	git branch:'master', credentialsId: '1', url: 'https://github.com/pallavsharma67/jmeter-test'
 	echo "Current Directory : ${workspace}"
 	sh "ls ${workspace}"
 	sh "jmeter -n -t ${workspace}/blah.jmx -Jusers=20 -l test.jtl"
