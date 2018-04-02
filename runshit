@@ -1,6 +1,5 @@
 node {
 	stage 'Running JMeter Test'
-	pwd(){
-		sh 'jmeter -n -t blah.jmx -Jusers=20 -l test.jtl'
-	}
+	def workingDirectory = pwd()
+	sh 'jmeter -n -t ${workingDirectory}blah.jmx -Jusers=20 -l test.jtl'
 }
