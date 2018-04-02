@@ -1,4 +1,5 @@
 node {
 	stage 'starting'
-	input 'Are you sure?'
+	def project_folder = input message: 'Select a folder to run', parameters: [file(description: '', name: 'f1'), file(description: '', name: 'f2')]
+	echo "${project_folder}"
 }
