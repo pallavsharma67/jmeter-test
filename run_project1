@@ -3,6 +3,7 @@ node {
 	def workspace = pwd()
 	git branch:'master', credentialsId: '1', url: 'https://github.com/pallavsharma67/jmeter-test'
 	echo "Current Directory : ${workspace}"
+	sh "ls"
 
 	stage 'reading directory'
 	def files = findFiles(glob: 'project1/*.jmx')
