@@ -17,10 +17,17 @@ node {
 	echo dirList
 	def project_folder = input message: 'Select Project', ok: 'Select',parameters: [choice(name: 'PROJECT_FOLDER', choices: dirList, description: 'What is the project to run?')]
 	project_folder = project_folder.trim()
-	echo "${project_folder}"
+	echo "Selected Project : ${project_folder}"
 
 	if("${project_folder}" != "--select--"){
-		stage 'Running Project : ${project_folder}'
+		stage "Running Project : ${project_folder}"
+		echo "${project_folder}"
+		def files = findFiles(glob: "${project_folder}/*.jmx")
+
+		for(i in files){
+			stage "Running Task: ${i}"
+			sh "jmeter -n -t ${i} -l test.jtl"
+		}
 	}else{
 		echo "Nothing selected"
 	}
