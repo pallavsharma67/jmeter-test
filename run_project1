@@ -13,6 +13,7 @@ node {
 		if(buff.contains("prj-") && buff.contains("/"))
 			dirList += "\n${i}"
 	}
+	dirList = dirList.replaceAll('/', '')
 	echo dirList
 	def project_folder = input message: 'Select Project', ok: 'Select',parameters: [choice(name: 'PROJECT_FOLDER', choices: dirList, description: 'What is the project to run?')]
 	project_folder = project_folder.trim()
