@@ -25,8 +25,11 @@ node {
 		def files = findFiles(glob: "${project_folder}/*.jmx")
 
 		for(i in files){
-			stage "Running Task: ${i}"
-			sh "jmeter -n -t \"${i}\" -l test.jtl"
+			def buffArr = i.split('/')
+			def fileName = buffArr.last()
+			stage "Running Task: ${fileName}"
+			sh "jmeter -n -t \"${i}\" -l ${fileName}.jtl"
+			perfReport "${fileName}.jtl"
 		}
 	}else{
 		echo "Nothing selected"
