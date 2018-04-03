@@ -27,6 +27,7 @@ node {
 		for(i in files){
 			stage "Running Task: ${i}"
 			sh "jmeter -n -t \"${i}\" -l test.jtl"
+			performanceReport parsers: [[$class: 'JMeterParser', glob: "jmeter_scripts\\test_results.jtl"]], relativeFailedThresholdNegative: 1.2, relativeFailedThresholdPositive: 1.89, relativeUnstableThresholdNegative: 1.8, relativeUnstableThresholdPositive: 1.5
 		}
 	}else{
 		echo "Nothing selected"
