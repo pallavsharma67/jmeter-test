@@ -29,7 +29,7 @@ node {
 			def buffArr = filePath.split('/')
 			def fileName = buffArr.last()
 			stage "Running Task: ${fileName}"
-			sh "jmeter -n -t \"${i}\" -l ${fileName}.jtl"
+			sh "jmeter -n -t \"${i}\" -J jmeter.save.saveservice.output_format=xml -l ${fileName}.jtl"
 			performanceReport parsers: [[$class: 'JMeterParser', glob: "${fileName}.jtl"]], relativeFailedThresholdNegative: 1.2, relativeFailedThresholdPositive: 1.89, relativeUnstableThresholdNegative: 1.8, relativeUnstableThresholdPositive: 1.5
 		}
 	}else{
