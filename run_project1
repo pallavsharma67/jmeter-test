@@ -25,7 +25,8 @@ node {
 		def files = findFiles(glob: "${project_folder}/*.jmx")
 
 		for(i in files){
-			def buffArr = i.split('/')
+			String filePath = "${i}";
+			def buffArr = filePath.split('/')
 			def fileName = buffArr.last()
 			stage "Running Task: ${fileName}"
 			sh "jmeter -n -t \"${i}\" -l ${fileName}.jtl"
